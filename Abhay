@@ -1,1 +1,108 @@
-this is github
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Details and Therapist Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .form-container input, .form-container select, .form-container button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function showMentalHealthForm() {
+            document.getElementById('patient-form').classList.add('hidden');
+            document.getElementById('mental-health-form').classList.remove('hidden');
+        }
+
+        function showTherapists() {
+            document.getElementById('mental-health-form').classList.add('hidden');
+            document.getElementById('therapist-list').classList.remove('hidden');
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Patient Details Form -->
+        <div id="patient-form">
+            <h2>Patient Details</h2>
+            <form onsubmit="event.preventDefault(); showMentalHealthForm();">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+
+                <button type="submit">Next</button>
+            </form>
+        </div>
+
+        <!-- Mental Health Form -->
+        <div id="mental-health-form" class="hidden">
+            <h2>Mental Health Details</h2>
+            <form onsubmit="event.preventDefault(); showTherapists();">
+                <label for="issue">Mental Health Issue:</label>
+                <select id="issue" name="issue" required>
+                    <option value="">Select an Issue</option>
+                    <option value="depression">Depression</option>
+                    <option value="anxiety">Anxiety</option>
+                    <option value="ptsd">PTSD</option>
+                    <option value="bipolar">Bipolar Disorder</option>
+                    <!-- Add more options as needed -->
+                </select>
+
+                <label for="duration">How Long Have You Been Suffering?</label>
+                <input type="text" id="duration" name="duration" required>
+
+                <label for="previous-therapy">Have You Been to a Therapist Before?</label>
+                <select id="previous-therapy" name="previous-therapy" required>
+                    <option value="">Select an Option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <button type="submit">Next</button>
+            </form>
+        </div>
+
+        <!-- Therapist List -->
+        <div id="therapist-list" class="hidden">
+            <h2>Select a Therapist</h2>
+            <form>
+                <label for="therapist">Choose a Therapist:</label>
+                <select id="therapist" name="therapist" required>
+                    <option value="">Select a Therapist</option>
+                    <option value="therapist1">Dr. Jane Smith - Specializes in Depression</option>
+                    <option value="therapist2">Dr. John Doe - Specializes in Anxiety</option>
+                    <option value="therapist3">Dr. Emily White - Specializes in PTSD</option>
+                    <!-- Add more options as needed -->
+                </select>
+
+                <button type="submit">Schedule Appointment</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
